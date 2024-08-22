@@ -26,6 +26,7 @@ const fetchController = asyncHandler((req, res, next) => {
             data        // data == data: data 
         }));
     });
+    
 });
 
 

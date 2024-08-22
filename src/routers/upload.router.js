@@ -10,7 +10,7 @@ import ApiError from '../utils/ApiError.js';
 
 router.post("/upload",upload.array("givenfiles" , 10) , (req, res, next)=>{
     //taking time from frontend
-    // time is taken in minutes
+    // time is taken in minutes 
     const timeOut=(req.body.timeOut)*1000*60;
     if(!timeOut){
         throw new ApiError("invalid field", 400);
@@ -58,7 +58,7 @@ router.post("/upload",upload.array("givenfiles" , 10) , (req, res, next)=>{
    
     //sending response back to client
     const data=req.files.map((file)=>{
-        return {url:`http://localhost:3000/uploads/${uniqueFolderName}/${path.basename(file.path)}`}
+        return {url:`http://localhost:3001/uploads/${uniqueFolderName}/${path.basename(file.path)}`}
        })
     res.status(201).json(new ApiResponse("uploaded successfully", {
         accessCode: uniqueFolderName,
