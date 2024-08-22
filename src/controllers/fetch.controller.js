@@ -14,7 +14,7 @@ const fetchController = asyncHandler((req, res, next) => {
 
     fs.readdir(folderPath, (err, files) => {
         if (err) {
-            console.error('Error reading folder:', err);
+            // console.error('Error reading folder:', err);
             return res.status(500).send('Error reading folder');
         }
 
@@ -22,7 +22,7 @@ const fetchController = asyncHandler((req, res, next) => {
         const data=files.map((file)=>{
             return {url:`http://localhost:3000/uploads/${folderId}/${path.basename(file.toString())})}`}
         })
-        res.status(201).json(new ApiResponse("uploaded successfully", {
+        res.status(201).json(new ApiResponse("fetch successfully", {
             data        // data == data: data 
         }));
     });
@@ -40,6 +40,7 @@ const downloadController = asyncHandler((req, res, next) =>{
             console.error('Error downloading file:', err);
             return res.status(500).send('Error downloading file');
         }
+        console.log("download successfully");
     });
 });
 

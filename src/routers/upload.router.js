@@ -38,10 +38,10 @@ router.post("/upload",upload.array("givenfiles" , 10) , (req, res, next)=>{
             const filePath = path.join(uploadDirectory, path.basename(file.path));
             fs.unlinkSync(filePath);
             //fs.unlink(`${req.files[0].path}`, ()=>{});
-            console.log("hi setTimeout");
+            // console.log("hi setTimeout");
         })
         fs.rmdirSync(uploadDirectory);
-        console.log(`Files in ${uploadDirectory} deleted`);
+        // console.log(`Files in ${uploadDirectory} deleted`);
     } , timeOut);
 
     
