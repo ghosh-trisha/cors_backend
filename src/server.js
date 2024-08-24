@@ -5,7 +5,7 @@ const port=process.env.PORT;
 import cors from 'cors';
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "https://cor-s.netlify.app"],
     credentials: true
 }));
 

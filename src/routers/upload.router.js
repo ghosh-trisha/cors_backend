@@ -46,7 +46,8 @@ router.post("/upload",upload.array("givenfiles" , 10) , (req, res, next)=>{
    
     //sending response back to client
     const data=req.files.map((file)=>{
-        return {url:`http://localhost:3001/uploads/${uniqueFolderName}/${path.basename(file.path)}`}
+        // return {url:`http://localhost:3001/uploads/${uniqueFolderName}/${path.basename(file.path)}`}
+        return {url:`https://cors-backend-u0je.onrender.com/uploads/${uniqueFolderName}/${path.basename(file.path)}`}
        })
     res.status(201).json(new ApiResponse("uploaded successfully", {
         accessCode: uniqueFolderName,
