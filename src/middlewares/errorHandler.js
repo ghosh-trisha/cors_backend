@@ -10,7 +10,7 @@ const errorHandler = (error, req, res, next)=>{
     else{
         res.status(500).json({
             success: false,
-            message: "internal server error"
+            message: error.message
         });
     }
 }
