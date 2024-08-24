@@ -21,7 +21,7 @@ const fetchController = asyncHandler((req, res, next) => {
         // console.log(files);
         const data=files.map((file)=>{
             // return {url:`http://localhost:3000/uploads/${folderId}/${path.basename(file.toString())}`}
-            return {url:`https://cors-backend-u0je.onrender.com/uploads/${folderId}/${path.basename(file.toString())}`}
+            return {url:`https://cors-backend-bn7d.onrender.com/uploads/${folderId}/${path.basename(file.toString())}`}
         })
         res.status(201).json(new ApiResponse("fetch successfully", {
             data        // data == data: data 
