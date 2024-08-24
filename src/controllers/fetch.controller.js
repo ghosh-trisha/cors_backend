@@ -20,7 +20,7 @@ const fetchController = asyncHandler((req, res, next) => {
 
         // console.log(files);
         const data=files.map((file)=>{
-            return {url:`http://localhost:3000/uploads/${folderId}/${path.basename(file.toString())})}`}
+            return {url:`http://localhost:3000/uploads/${folderId}/${path.basename(file.toString())}`}
         })
         res.status(201).json(new ApiResponse("fetch successfully", {
             data        // data == data: data 
