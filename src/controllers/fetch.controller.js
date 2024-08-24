@@ -38,9 +38,9 @@ const downloadController = asyncHandler((req, res, next) =>{
     res.download(filePath, (err) => {
         if (err) {
             console.error('Error downloading file:', err);
-            return res.status(500).send('Error downloading file');
+            return res.status(500).send(new ApiResponse('Error downloading file', {}));
         }
-        console.log("download successfully");
+        // console.log("download successfully");
     });
 });
 

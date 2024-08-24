@@ -2,10 +2,17 @@ import express from 'express';
 const app = express();
 import "dotenv/config";
 const port=process.env.PORT;
+import cors from 'cors';
+
+app.use(cors({
+    origin: ["http://localhost:5173"],
+    credentials: true
+}));
 
 app.listen(port, ()=>{
     console.log(`port ${port} is assigned successfully`);
 });
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("public"))

@@ -9,9 +9,9 @@ import ApiError from '../utils/ApiError.js';
 
 
 router.post("/upload",upload.array("givenfiles" , 10) , (req, res, next)=>{
-    //taking time from frontend
-    // time is taken in minutes 
-    const timeOut=(req.body.timeOut)*1000*60;
+    
+    // taking time from frontend
+    const timeOut=(req.body.timeOut)*60*1000; // time is taken in minutes
     if(!timeOut){
         throw new ApiError("invalid field", 400);
     }
@@ -23,7 +23,7 @@ router.post("/upload",upload.array("givenfiles" , 10) , (req, res, next)=>{
     const uploadDirectory = path.join('public/uploads', uniqueFolderName);
     fs.mkdirSync(uploadDirectory); // Create the folder
 
-
+    
     // Move uploaded files to the unique folder
     req.files.forEach(file => {
         const oldPath = file.path;
@@ -37,23 +37,11 @@ router.post("/upload",upload.array("givenfiles" , 10) , (req, res, next)=>{
         req.files.forEach(file =>{
             const filePath = path.join(uploadDirectory, path.basename(file.path));
             fs.unlinkSync(filePath);
-            //fs.unlink(`${req.files[0].path}`, ()=>{});
-            // console.log("hi setTimeout");
+            console.log("hi setTimeout");
         })
         fs.rmdirSync(uploadDirectory);
-        // console.log(`Files in ${uploadDirectory} deleted`);
+        console.log(`Files in ${uploadDirectory} deleted`);
     } , timeOut);
-
-    
-    // setTimeout(()=>{
-    //     fs.readdir("public/uploads/", (err, files)=>{
-    //         files.forEach(file => {
-    //             fs.unlink(path.join("public/uploads/" , path.basename(file)));
-    //         });
-    //     });
-    // }
-    
-    //  , time);
    
    
     //sending response back to client
